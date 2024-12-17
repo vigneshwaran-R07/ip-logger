@@ -1,0 +1,39 @@
+<?php
+// Simple IP Logger with Device Information
+$log_file = "logs.txt";
+
+// Get visitor's IP address
+$ip_address = $_SERVER['REMOTE_ADDR'];
+
+// Get user agent (browser and device details)
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+// Get current timestamp
+$timestamp = date("Y-m-d H:i:s");
+
+// Create a log entry
+$log_entry = "IP: $ip_address | User Agent: $user_agent | Time: $timestamp\n";
+
+// Save the log entry to a text file
+file_put_contents($log_file, $log_entry, FILE_APPEND | LOCK_EX);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Logger Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        <p>Your visit has been logged successfully.</p>
+        <p>This is a demonstration website that logs IP addresses and device information for analytics purposes.</p>
+        <div class="footer">
+            <p>&copy; 2024 My Website | All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
